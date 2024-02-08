@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AdminSecretGuard } from './admin-secret-auth.guard';
 import { cp } from 'fs';
@@ -16,13 +16,14 @@ export class AppController {
 
   @Post("/process")
   @UseGuards(AdminSecretGuard)
-  process(@Body() body: any): any {
+  @HttpCode(201)
+  process(@Body() body: any) {
     console.log(`received request body: ${JSON.stringify(body)} `);
     const response = {
       isSuccessful: true,
       data: body
     }
-    console.log(`sending response: ${JSON.stringify(response)} `);
+    console.log(`sending response body: ${JSON.stringify(response)} `);
     return response;
   }
 
