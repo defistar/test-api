@@ -23,6 +23,7 @@ export class AppController {
       data: body
     }
     console.log(`sending response: ${JSON.stringify(response)} `);
+    return response;
   }
 
 }
