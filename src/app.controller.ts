@@ -18,12 +18,12 @@ export class AppController {
   @UseGuards(AdminSecretGuard)
   @HttpCode(201)
   process(@Body() body: any) {
-    console.log(`received request body: ${JSON.stringify(body)} `);
+    console.log(`received request data as: ${JSON.stringify(body)} `);
     const response = {
       isSuccessful: true,
       data: body
     }
-    console.log(`sending response body: ${JSON.stringify(response)} `);
+    console.log(`sending response body as: ${JSON.stringify(response)} `);
     return response;
   }
 
